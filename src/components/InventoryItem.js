@@ -32,11 +32,6 @@ class InventoryItem extends Component
 		window.location.reload(false);
 	}
 
-	componentDidUpdate = () =>
-	{
-		console.log(this.state);
-	}
-
 	render()
 	{
 		const buttons = (
