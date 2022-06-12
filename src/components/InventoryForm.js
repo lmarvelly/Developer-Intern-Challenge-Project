@@ -32,7 +32,7 @@ class InventoryForm extends Component
 
 	componentDidUpdate = () =>
 	{
-		console.log('Component did update:', this.state);
+		// console.log('Component did update:', this.state);
 	}
 
 	onNameChange = ( e ) =>
@@ -70,15 +70,14 @@ class InventoryForm extends Component
 			quantity
 		}
 
-		console.log(inventoryItem);
-		console.log(this.state.inventoryList);
+		saveInventory( [...this.state.inventoryList, inventoryItem] );
+
 		this.setState(
 		{
-			inventoryList: [...this.state.inventoryList, inventoryItem]
+			inventoryList: getSavedInventory()
 		});
-		console.log(this.state);
 
-		saveInventory( this.state.inventoryList );
+		console.log(this.state.inventoryList);
 	}
 
 	render()
