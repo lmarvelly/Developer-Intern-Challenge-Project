@@ -6,6 +6,7 @@ import InventoryList from './InventoryList';
 const Dashboard = () => (
 	<div className='content-container'>
 		<InventoryForm />
+		<hr />
 		<InventoryList />
 	</div>
 );
