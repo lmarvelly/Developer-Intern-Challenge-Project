@@ -3,12 +3,6 @@ import uuid from 'uuid';
 
 import { getSavedInventory, saveInventory } from '../actions/inventoryFunctions';
 
-/**
- * inventory:
- * Item name
- * price
- * quanity
- */
 class InventoryForm extends Component
 {
 	constructor( props )
