@@ -9,3 +9,22 @@ export const saveInventory = ( inventoryList ) =>
 {
 	localStorage.setItem('inventoryList', JSON.stringify(inventoryList));
 }
+
+export const removeItem = ( itemName, itemUuid ) =>
+{
+	if(confirm(`Are you sure you want to delete ${itemName} from your inventory?`))
+	{
+		let inventoryList = getSavedInventory();
+
+		const itemIndex = inventoryList.findIndex((item) =>
+		{
+			return itemUuid === item.uuid;
+		});
+
+		inventoryList.splice( itemIndex, 1 )
+
+		saveInventory(inventoryList);
+
+		alert(`${itemName} removed from inventory`)
+	}
+}

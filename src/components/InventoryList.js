@@ -25,6 +25,7 @@ class InventoryList extends Component
 						return(
 							<InventoryItem
 								key={inventory.uuid}
+								uuid={inventory.uuid}
 								itemName={inventory.itemName}
 								price={inventory.price}
 								quantity={inventory.quantity}
