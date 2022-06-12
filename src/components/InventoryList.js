@@ -15,11 +15,6 @@ class InventoryList extends Component
 		}
 	}
 
-	componentDidUpdate = () =>
-	{
-		this.setState()
-	}
-
 	render()
 	{
 		return(
