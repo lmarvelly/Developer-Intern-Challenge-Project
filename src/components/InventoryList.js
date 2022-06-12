@@ -19,6 +19,7 @@ class InventoryList extends Component
 	{
 		return(
 			<div>
+				<h1>Inventory List</h1>
 				{
 					this.state.inventoryList.map((inventory) =>
 					{
