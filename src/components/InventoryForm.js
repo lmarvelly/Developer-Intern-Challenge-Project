@@ -10,12 +10,13 @@ class InventoryForm extends Component
 		super( props );
 		this.state =
 		{
-			uuid: uuid(),
-			itemName: '',
-			price: '',
-			quantity: '',
+			uuid: this.props.uuid ? this.props.uuid : uuid(),
+			itemName: this.props.itemName ? this.props.itemName : '',
+			price: this.props.price ? this.props.price : '',
+			quantity: this.props.quantity ? this.props.quantity : '',
 			inventoryList: []
 		}
+		console.log(this.state);
 	}
 
 	componentDidMount = () =>
@@ -93,7 +94,7 @@ class InventoryForm extends Component
 					type="text" 
 				/>
 
-				<button className='button'>Add new item</button>
+				<button className='button'>{this.props.itemName ? 'Edit Item' : 'Add new item'}</button>
 			</form>
 		);
 	}
