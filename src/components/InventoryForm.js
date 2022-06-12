@@ -17,7 +17,6 @@ class InventoryForm extends Component
 			quantity: this.props.quantity ? this.props.quantity : '',
 			inventoryList: []
 		}
-		console.log(this.state.formType);
 	}
 
 	componentDidMount = () =>
@@ -68,6 +67,7 @@ class InventoryForm extends Component
 		{
 			editItem(inventoryItem);
 			this.props.isEditing(e);
+			window.location.reload(false);
 		}
 
 		this.setState(
