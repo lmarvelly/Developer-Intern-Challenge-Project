@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import uuid from 'uuid';
 
 /**
  * inventory:
@@ -14,6 +14,7 @@ class InventoryForm extends Component
 		super( props );
 		this.state =
 		{
+			uuid: uuid(),
 			itemName: '',
 			price: '',
 			quantity: ''
@@ -42,10 +43,20 @@ class InventoryForm extends Component
 	{
 		e.preventDefault();
 
+		const uuid = this.state.uuid;
 		const name = this.state.itemName;
 		const price = this.state.price;
+		const quantity = this.state.quantity;
 
-		console.log(name, price);
+		const inventoryItem = 
+		{ 
+			uuid, 
+			name,
+			price,
+			quantity
+		}
+
+		console.log(inventoryItem);
 	}
 
 	render()
