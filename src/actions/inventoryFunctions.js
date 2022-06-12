@@ -28,3 +28,15 @@ export const removeItem = ( itemName, itemUuid ) =>
 		alert(`${itemName} removed from inventory`)
 	}
 }
+
+export const editItem = ( editedItem ) =>
+{
+	const inventoryList = getSavedInventory();
+	const itemIndex = inventoryList.findIndex((item) =>
+	{
+		return editedItem.uuid === item.uuid;
+	});
+
+	inventoryList[itemIndex] = editedItem;
+	saveInventory(inventoryList);
+}

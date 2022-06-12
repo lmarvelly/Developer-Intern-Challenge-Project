@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import uuid from 'uuid';
 
-import { getSavedInventory, saveInventory } from '../actions/inventoryFunctions';
+import { getSavedInventory, editItem, saveInventory } from '../actions/inventoryFunctions';
 
 class InventoryForm extends Component
 {
@@ -11,12 +11,13 @@ class InventoryForm extends Component
 		this.state =
 		{
 			uuid: this.props.uuid ? this.props.uuid : uuid(),
+			formType: this.props.formType,
 			itemName: this.props.itemName ? this.props.itemName : '',
 			price: this.props.price ? this.props.price : '',
 			quantity: this.props.quantity ? this.props.quantity : '',
 			inventoryList: []
 		}
-		console.log(this.state);
+		console.log(this.state.formType);
 	}
 
 	componentDidMount = () =>
@@ -44,6 +45,8 @@ class InventoryForm extends Component
 
 	onSubmit = ( e ) =>
 	{
+		e.preventDefault();
+
 		const uuid = this.state.uuid;
 		const itemName = this.state.itemName;
 		const price = this.state.price;
@@ -57,7 +60,15 @@ class InventoryForm extends Component
 			quantity
 		}
 
-		saveInventory( [...this.state.inventoryList, inventoryItem] );
+		if(this.state.formType === 'NEW_ITEM')
+		{
+			saveInventory( [...this.state.inventoryList, inventoryItem] );
+		}
+		else if(this.state.formType === 'EDIT_ITEM')
+		{
+			editItem(inventoryItem);
+			this.props.isEditing(e);
+		}
 
 		this.setState(
 		{

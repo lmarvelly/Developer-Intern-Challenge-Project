@@ -18,7 +18,7 @@ class InventoryItem extends Component
 	isEditing = (e) =>
 	{
 		e.preventDefault();
-		this.setState({editing:true});
+		this.setState({editing: !this.state.editing});
 	}
 
 	handleDelete = (e) =>
@@ -42,6 +42,8 @@ class InventoryItem extends Component
 
 		const inventoryForm = (
 			<InventoryForm
+				formType={'EDIT_ITEM'}
+				isEditing={this.isEditing}
 				uuid={this.props.uuid}
 				itemName={this.props.itemName}
 				price={this.props.price}

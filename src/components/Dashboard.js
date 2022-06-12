@@ -6,7 +6,7 @@ import InventoryList from './InventoryList';
 const Dashboard = () => (
 	<div className='content-container'>
 		<h1>Add New Item</h1>
-		<InventoryForm />
+		<InventoryForm formType={'NEW_ITEM'} />
 		<hr />
 
 		<h1>Add New Werehouse</h1>
