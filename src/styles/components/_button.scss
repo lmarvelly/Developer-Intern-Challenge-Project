@@ -39,7 +39,7 @@
 {
 	@extend .button;
 
-	background: none;
+	background: $blue;
 	border: 1px solid white;
 	color: white;
 	
@@ -54,6 +54,12 @@
 		color: $dark-blue;
 		border-color: white;
 	}
+}
+
+.button-small-alt
+{
+	@extend .button-small;
+	background: $red;
 }
 
 .button--reset
