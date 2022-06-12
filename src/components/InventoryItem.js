@@ -11,7 +11,10 @@ class InventoryItem extends Component
 		
 		this.state =
 		{
-			editing: false
+			editing: false,
+			itemName: this.props.itemName,
+			price: this.props.price,
+			quantity: this.props.quantity
 		}
 	}
 
@@ -29,11 +32,18 @@ class InventoryItem extends Component
 		window.location.reload(false);
 	}
 
+	componentDidUpdate = () =>
+	{
+		console.log(this.state);
+	}
+
 	render()
 	{
 		const buttons = (
 			<div>
-				<span>{`Item: ${this.props.itemName} Price: £${this.props.price} Quantity: ${this.props.quantity}`}</span>
+				<span>{`Item: ${this.state.itemName}`}</span><br />
+				<span>{`Price: £${this.state.price}`}</span><br />
+				<span>{`Quantity: ${this.state.quantity}`}</span><br />
 				<br />
 				<button className='button-small' onClick={this.isEditing}>edit</button>
 				<button className='button-small-alt' onClick={this.handleDelete}>delete</button>
