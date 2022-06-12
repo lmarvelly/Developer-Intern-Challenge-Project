@@ -58,14 +58,14 @@ class InventoryForm extends Component
 		e.preventDefault();
 
 		const uuid = this.state.uuid;
-		const name = this.state.itemName;
+		const itemName = this.state.itemName;
 		const price = this.state.price;
 		const quantity = this.state.quantity;
 
 		const inventoryItem = 
 		{ 
 			uuid, 
-			name,
+			itemName,
 			price,
 			quantity
 		}
