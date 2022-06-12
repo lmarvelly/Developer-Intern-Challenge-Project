@@ -13,9 +13,11 @@ class InventoryItem extends Component
 		{
 			editing: false,
 			itemName: this.props.itemName,
-			price: this.props.price,
+			werehouse: this.props.werehouse,
 			quantity: this.props.quantity
 		}
+		
+		console.log(this.state);
 	}
 
 	isEditing = (e) =>
@@ -35,10 +37,10 @@ class InventoryItem extends Component
 	render()
 	{
 		const buttons = (
-			<div>
-				<span>{`Item: ${this.state.itemName}`}</span><br />
-				<span>{`Price: £${this.state.price}`}</span><br />
+			<div className='list-item__row'>
+				<h3 className='list-item__title'>{`${this.state.itemName}`}</h3><br />
 				<span>{`Quantity: ${this.state.quantity}`}</span><br />
+				<span>{`Werehouse: ${this.state.werehouse}`}</span><br />
 				<br />
 				<button className='button-small' onClick={this.isEditing}>edit</button>
 				<button className='button-small-alt' onClick={this.handleDelete}>delete</button>
@@ -51,7 +53,7 @@ class InventoryItem extends Component
 				isEditing={this.isEditing}
 				uuid={this.props.uuid}
 				itemName={this.props.itemName}
-				price={this.props.price}
+				werehouse={this.props.werehouse}
 				quantity={this.props.quantity}
 			/>
 		);
@@ -59,8 +61,6 @@ class InventoryItem extends Component
 		return(
 			<div>
 				{this.state.editing ? inventoryForm : buttons}
-				<br />
-				<hr />
 			</div>
 		)
 	}

@@ -13,7 +13,7 @@ class InventoryForm extends Component
 			uuid: this.props.uuid ? this.props.uuid : uuid(),
 			formType: this.props.formType,
 			itemName: this.props.itemName ? this.props.itemName : '',
-			price: this.props.price ? this.props.price : '',
+			werehouse: this.props.werehouse ? this.props.werehouse : '',
 			quantity: this.props.quantity ? this.props.quantity : '',
 			inventoryList: []
 		}
@@ -30,10 +30,10 @@ class InventoryForm extends Component
 		this.setState({ itemName });
 	}
 
-	onPriceChange = ( e ) =>
+	onWerehouseChange = ( e ) =>
 	{
-		const price = e.target.value;
-		this.setState({ price });
+		const werehouse = e.target.value;
+		this.setState({ werehouse });
 	}
 
 	onQuantityChange = ( e ) =>
@@ -48,14 +48,14 @@ class InventoryForm extends Component
 
 		const uuid = this.state.uuid;
 		const itemName = this.state.itemName;
-		const price = this.state.price;
+		const werehouse = this.state.werehouse;
 		const quantity = this.state.quantity;
 
 		const inventoryItem = 
 		{ 
 			uuid, 
 			itemName,
-			price,
+			werehouse,
 			quantity
 		}
 
@@ -67,13 +67,9 @@ class InventoryForm extends Component
 		{
 			editItem(inventoryItem);
 			this.props.isEditing(e);
-			window.location.reload(false);
 		}
 
-		this.setState(
-		{
-			inventoryList: getSavedInventory()
-		});
+		window.location.reload(false);
 	}
 
 	render()
@@ -89,11 +85,11 @@ class InventoryForm extends Component
 					type="text" 
 				/>
 				<input 
-					id='price'
+					id='werehouse'
 					className='text-input'
-					value={this.state.price}
-					onChange={this.onPriceChange}
-					placeholder='0.00' 
+					value={this.state.werehouse}
+					onChange={this.onWerehouseChange}
+					placeholder='Werehouse Name' 
 					type="text" 
 				/>
 				<input 
