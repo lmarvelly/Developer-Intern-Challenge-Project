@@ -1,0 +1,49 @@
+.error
+{
+	color: $red;
+	border-color: $red !important;
+}
+
+.text-input
+{
+	border: 1px solid $light-blue;
+	font-size: $font-size-large;
+	font-weight: 300;
+	height: 50px;
+	padding: $s-size;
+}
+
+.text-input__error
+{
+	@extend .text-input;
+	@extend .error;
+}
+
+.text-input__error::placeholder
+{
+	color: $red;
+	opacity: 1;
+}
+
+.select
+{
+	@extend .text-input;
+	padding: $xs-size $s-size;
+	@media (min-width: $desktop-breakpoint) 
+	{
+		padding: $xs-size;
+	}
+}
+
+.select__error
+{
+	@extend .select;
+	@extend .error;
+	background-color: lighten($light-red, 40%);
+}
+
+.textarea
+{
+	@extend .text-input;
+	height: 10rem;
+}

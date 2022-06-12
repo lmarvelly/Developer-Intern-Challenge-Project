@@ -1,0 +1,138 @@
+.list-header
+{
+	background: $dark-blue;
+	border: 1px solid $dark-blue;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	padding: $s-size $m-size;
+}
+
+.list-body
+{
+	margin-bottom: $m-size;
+	@media (min-width: $desktop-breakpoint)
+	{
+		margin-bottom: $xl-size;
+	}
+}
+
+.list-item
+{
+	background: $pale-yellow;
+	border: 1px solid $dark-blue;
+	border-top: 0;
+	color: $dark-blue;
+	display: flex;
+	flex-direction: column;
+	padding: $s-size;
+	transition: background .3s ease;
+
+	&:hover
+	{
+		background: darken($pale-yellow, 10%);
+		cursor: pointer;
+	}
+}
+
+.list-item__row
+{
+	display: flex;
+	flex-direction: column;
+
+	p
+	{
+		margin: 0;
+	}
+
+	@media (min-width: $desktop-breakpoint)
+	{
+		align-items: center;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
+.list-item__column
+{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.list-item__align-center
+{
+	align-self: center;
+}
+
+.list-item--message
+{
+	align-items: center;
+	justify-content: center;
+	padding: $m-size;
+
+	&:hover{
+		background: $pale-yellow;
+	}
+}
+
+.list-item__title
+{
+	margin: 0;
+	word-break: break-all;
+}
+
+.list-item__title--light
+{
+	@extend .list-item__title;
+	font-weight: 500;
+}
+
+.list-item__sub-title
+{
+	color: $dark-blue;
+	opacity: 0.8;
+	font-size: $font-size-small;
+	word-break: break-all;
+}
+
+.list-item__data
+{
+	font-weight: 300;
+	font-size: $font-size-small;
+	margin: 0;
+}
+
+.list-item__expanded-data
+{
+	@extend .list-item__data;
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	color: $dark-blue;
+	opacity: 0.9;
+	margin: $s-size 0;
+	width: 100%;
+}
+
+.list-item__expanded-buttons
+{
+	@extend .list-item__expanded-data;
+	@media (min-width: $desktop-breakpoint)
+	{
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
+.list-item__expanded-data--column
+{
+	@extend .list-item__expanded-data;
+	flex-direction: column;
+}
+
+.list-item__data-top
+{
+	@extend .list-item__data;
+	margin-top: $s-size;
+}

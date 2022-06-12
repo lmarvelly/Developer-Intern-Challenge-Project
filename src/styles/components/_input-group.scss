@@ -1,0 +1,36 @@
+.input-group
+{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-bottom: $m-size;
+
+	@media (min-width: $desktop-breakpoint) 
+	{
+		flex-direction: row;
+		margin-bottom: $l-size;
+	}
+}
+
+.input-group__item
+{
+	margin-bottom: $s-size;
+
+	@media (min-width: $desktop-breakpoint) 
+	{
+		width: 49%;
+	}
+}
+
+.DateRangePicker, .DateRangePicker > div, .DateRangePickerInput, 
+.SingleDatePicker, .DateRangePickerInput
+{
+	width: 100%;
+	@media (min-width: $desktop-breakpoint) 
+	{
+		display: flex !important;
+		justify-content: space-between;
+		align-items: center;
+	}
+}

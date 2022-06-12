@@ -1,0 +1,48 @@
+.hamburger
+{
+	background: none;
+	border: white 1px solid;
+	color: white;
+	font-size: $font-size-xxlarge;
+	padding: $s-size $m-size;
+
+	&:hover, &:focus
+	{
+		background-color: white;
+		color: $dark-blue;
+	}
+}
+
+.nav
+{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+	.button
+	{
+		margin-bottom: $s-size;
+	}
+
+	@media (min-width: $desktop-breakpoint) 
+	{
+		// For overlaping dropdown
+		position: relative;
+
+		align-items: stretch;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
+.dropdown-group
+{
+	display: flex;
+	flex-direction: column;
+
+	@media (min-width: $desktop-breakpoint) 
+	{
+		// For overlaping dropdown
+		position: absolute;
+	}
+}

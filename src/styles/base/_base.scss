@@ -1,0 +1,119 @@
+/**
+ * Partical project file.
+ * Files starting with an underscore are know as partials
+ * This file is imported in the styles.scss file
+ */
+
+/**
+ * @box-sizing
+ * The default box-sizing is "content-box".
+ * This means that the browser sets the box size to be the box size
+ * specified + the padding + the border.
+ * 
+ * "border-box" means that the boxes height will be set to the 
+ * height specified. It'll automatically remove the space for the 
+ * border and the padding, leaving the rest of the space to the
+ * content. 
+ */
+*
+{
+	box-sizing: border-box;
+}
+
+/**
+ * Size explained: 
+ * 	Default page size = 16
+ * 	16 * 0.625 = 10
+ * 	Page name has a base 10 
+ *
+ *		Now if we use say 18rem the pixel size will be 18px
+ */
+html
+{
+	font-size: 62.5%;
+}
+body
+{
+	color: $darker-red;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: $m-size;
+	line-height: 1.6;
+}
+
+hr
+{
+	border-top: 1px solid $dark-blue;
+	width: 100%;
+	margin-bottom: $s-size;
+}
+
+button
+{
+	cursor: pointer; // changes mouse cursor to hand
+}
+
+button:disabled
+{
+	cursor: default;
+}
+
+select, input, textarea
+{
+	width: 100%;
+}
+
+.header-desktop-padding
+{
+	@media (min-width: $desktop-breakpoint)
+	{
+		margin-left: $xl-size;
+		margin-right: $xl-size;
+	}
+}
+
+.content-desktop-padding
+{
+	@extend .header-desktop-padding;
+	margin-bottom: $m-size;
+}
+
+.is-active
+{
+	font-weight: bold;
+}
+
+.bold-font
+{
+	font-weight: 700;
+}
+
+.margin-bottom-large
+{
+	margin-bottom: $l-size;
+}
+
+.margin-bottom-medium
+{
+	margin-bottom: $m-size;
+}
+
+.margin-top-medium--mobile
+{
+	margin-top: $m-size;
+
+	@media (min-width: $desktop-breakpoint)
+	{
+		margin-top: 0;
+	}
+}
+
+.margin-bottom-none
+{
+	margin-bottom: 0!important;
+}
+
+.align-vertical-center
+{
+	display: flex;
+	align-items: center;
+}
