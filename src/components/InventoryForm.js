@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import uuid from 'uuid';
 
+import { getSavedInventory, saveInventory } from '../actions/inventoryFunctions';
+
 /**
  * inventory:
  * Item name
@@ -17,8 +19,20 @@ class InventoryForm extends Component
 			uuid: uuid(),
 			itemName: '',
 			price: '',
-			quantity: ''
+			quantity: '',
+			inventoryList: []
 		}
+	}
+
+	componentDidMount = () =>
+	{
+		this.setState({inventoryList: getSavedInventory() });
+		console.log('Component did mount:', this.state);
+	}
+
+	componentDidUpdate = () =>
+	{
+		console.log('Component did update:', this.state);
 	}
 
 	onNameChange = ( e ) =>
@@ -57,6 +71,14 @@ class InventoryForm extends Component
 		}
 
 		console.log(inventoryItem);
+		console.log(this.state.inventoryList);
+		this.setState(
+		{
+			inventoryList: [...this.state.inventoryList, inventoryItem]
+		});
+		console.log(this.state);
+
+		saveInventory( this.state.inventoryList );
 	}
 
 	render()
