@@ -15,15 +15,9 @@ class InventoryList extends Component
 		}
 	}
 
-	componentDidMount = () =>
-	{
-		console.log('Component did mount:', this.state);
-	}
-
 	componentDidUpdate = () =>
 	{
 		this.setState()
-		console.log('Component did update:', this.state);
 	}
 
 	render()

@@ -27,12 +27,6 @@ class InventoryForm extends Component
 	componentDidMount = () =>
 	{
 		this.setState({inventoryList: getSavedInventory() });
-		console.log('Component did mount:', this.state);
-	}
-
-	componentDidUpdate = () =>
-	{
-		// console.log('Component did update:', this.state);
 	}
 
 	onNameChange = ( e ) =>
@@ -74,8 +68,6 @@ class InventoryForm extends Component
 		{
 			inventoryList: getSavedInventory()
 		});
-
-		console.log(this.state.inventoryList);
 	}
 
 	render()
