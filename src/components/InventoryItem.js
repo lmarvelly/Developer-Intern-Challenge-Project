@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+import InventoryForm from './InventoryForm';
 import { removeItem } from '../actions/inventoryFunctions';
 
 class InventoryItem extends Component
@@ -13,6 +15,12 @@ class InventoryItem extends Component
 		}
 	}
 
+	isEditing = (e) =>
+	{
+		e.preventDefault();
+		this.setState({editing:true});
+	}
+
 	handleDelete = (e) =>
 	{
 		removeItem(this.props.itemName, this.props.uuid);
@@ -23,12 +31,27 @@ class InventoryItem extends Component
 
 	render()
 	{
-		return(
+		const buttons = (
 			<div>
 				<span>{`Item: ${this.props.itemName} Price: £${this.props.price} Quantity: ${this.props.quantity}`}</span>
 				<br />
-				<button className='button-small' >edit</button>
+				<button className='button-small' onClick={this.isEditing}>edit</button>
 				<button className='button-small-alt' onClick={this.handleDelete}>delete</button>
+			</div>
+		);
+
+		const inventoryForm = (
+			<InventoryForm
+				uuid={this.props.uuid}
+				itemName={this.props.itemName}
+				price={this.props.price}
+				quantity={this.props.quantity}
+			/>
+		);
+
+		return(
+			<div>
+				{this.state.editing ? inventoryForm : buttons}
 				<br />
 				<hr />
 			</div>
