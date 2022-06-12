@@ -55,8 +55,6 @@ class InventoryForm extends Component
 
 	onSubmit = ( e ) =>
 	{
-		e.preventDefault();
-
 		const uuid = this.state.uuid;
 		const itemName = this.state.itemName;
 		const price = this.state.price;
