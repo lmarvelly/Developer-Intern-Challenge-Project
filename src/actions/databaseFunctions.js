@@ -1,10 +1,16 @@
+const defaultDataBase =
+{
+	werehouses: [],
+	inventory: []
+}
+
 // TODO: refactor getSavedInventory to getDatabase
 export const getDatabase = () =>
 {
 	// const inventoryListJSON = localStorage.getItem( 'inventoryList' );
 	const databaseJSON = localStorage.getItem( 'database' );
 
-	return databaseJSON ? JSON.parse( databaseJSON ) : [];
+	return databaseJSON ? JSON.parse( databaseJSON ) : defaultDataBase;
 }
 
 // TODO: Refactor saveInventory TO saveDatabase
