@@ -50,7 +50,7 @@ class WarehouseForm extends Component
 					className='text-input'
 					value={this.state.warehouseName}
 					onChange={this.onNameChange}
-					placeholder='Item Name' 
+					placeholder='Warehouse Name' 
 					type="text" 
 				/>
 				<button className='button'>{this.props.warehouseName ? 'Edit Warehouse' : 'Add new Warehouse'}</button>
