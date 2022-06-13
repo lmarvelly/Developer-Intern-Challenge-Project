@@ -54,7 +54,7 @@ class InventoryForm extends Component
 
 		const updateDatabase = this.state.database;
 
-		updateDatabase.inventory = [ ...this.state.database.inventory, inventoryItem ] 
+		updateDatabase.inventory = [ ...updateDatabase.inventory, inventoryItem ] 
 
 		if(this.state.formType === 'NEW_ITEM')
 		{
@@ -64,6 +64,7 @@ class InventoryForm extends Component
 		{
 			editInventoryItem(inventoryItem);
 			this.props.isEditing(e);
+			window.location.reload(false); // needed because after item is edits page/componet does not refresh
 		}
 	}
 
