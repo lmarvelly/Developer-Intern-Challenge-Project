@@ -65,6 +65,11 @@ class InventoryForm extends Component
 			this.props.isEditing(e);
 			window.location.reload(false); // needed because after item is edits page/componet does not refresh
 		}
+		else
+		{
+			alert('Whoops something went wrong');
+			window.location.reload(false); 
+		}
 	}
 
 	render()
