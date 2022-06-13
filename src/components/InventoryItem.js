@@ -13,7 +13,7 @@ class InventoryItem extends Component
 		{
 			editing: false,
 			itemName: this.props.itemName,
-			werehouse: this.props.werehouse,
+			warehouse: this.props.warehouse,
 			quantity: this.props.quantity
 		}
 		
@@ -40,7 +40,7 @@ class InventoryItem extends Component
 			<div className='list-item__row'>
 				<h3 className='list-item__title'>{`${this.state.itemName}`}</h3><br />
 				<span>{`Quantity: ${this.state.quantity}`}</span><br />
-				<span>{`Werehouse: ${this.state.werehouse}`}</span><br />
+				<span>{`Warehouse: ${this.state.warehouse}`}</span><br />
 				<br />
 				<button className='button-small' onClick={this.isEditing}>edit</button>
 				<button className='button-small-alt' onClick={this.handleDelete}>delete</button>
@@ -53,7 +53,7 @@ class InventoryItem extends Component
 				isEditing={this.isEditing}
 				uuid={this.props.uuid}
 				itemName={this.props.itemName}
-				werehouse={this.props.werehouse}
+				warehouse={this.props.warehouse}
 				quantity={this.props.quantity}
 			/>
 		);

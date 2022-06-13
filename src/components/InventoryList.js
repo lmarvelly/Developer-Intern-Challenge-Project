@@ -28,7 +28,7 @@ class InventoryList extends Component
 								key={inventory.uuid}
 								uuid={inventory.uuid}
 								itemName={inventory.itemName}
-								werehouse={inventory.werehouse}
+								warehouse={inventory.warehouse}
 								quantity={inventory.quantity}
 							/>
 						);

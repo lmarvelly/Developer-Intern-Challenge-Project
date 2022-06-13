@@ -13,7 +13,7 @@ class InventoryForm extends Component
 			uuid: this.props.uuid ? this.props.uuid : uuid(),
 			formType: this.props.formType,
 			itemName: this.props.itemName ? this.props.itemName : '',
-			werehouse: this.props.werehouse ? this.props.werehouse : '',
+			warehouse: this.props.warehouse ? this.props.warehouse : '',
 			quantity: this.props.quantity ? this.props.quantity : '',
 			database: getDatabase()
 		}
@@ -25,10 +25,10 @@ class InventoryForm extends Component
 		this.setState({ itemName });
 	}
 
-	onWerehouseChange = ( e ) =>
+	onWarehouseChange = ( e ) =>
 	{
-		const werehouse = e.target.value;
-		this.setState({ werehouse });
+		const warehouse = e.target.value;
+		this.setState({ warehouse });
 	}
 
 	onQuantityChange = ( e ) =>
@@ -43,14 +43,14 @@ class InventoryForm extends Component
 
 		const uuid = this.state.uuid;
 		const itemName = this.state.itemName;
-		const werehouse = this.state.werehouse;
+		const warehouse = this.state.warehouse;
 		const quantity = this.state.quantity;
 
 		const inventoryItem = 
 		{ 
 			uuid, 
 			itemName,
-			werehouse,
+			warehouse,
 			quantity
 		}
 
@@ -84,11 +84,11 @@ class InventoryForm extends Component
 					type="text" 
 				/>
 				<input 
-					id='werehouse'
+					id='warehouse'
 					className='text-input'
-					value={this.state.werehouse}
-					onChange={this.onWerehouseChange}
-					placeholder='Werehouse Name' 
+					value={this.state.warehouse}
+					onChange={this.onWarehouseChange}
+					placeholder='Warehouse Name' 
 					type="text" 
 				/>
 				<input 

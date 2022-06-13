@@ -1,6 +1,6 @@
 const defaultDataBase =
 {
-	werehouses: [],
+	warehouses: [],
 	inventory: []
 }
 
