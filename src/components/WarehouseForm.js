@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
 
-class WerehouseForm extends Component
+class WarehouseForm extends Component
 {
 	constructor(props)
 	{
@@ -10,7 +10,7 @@ class WerehouseForm extends Component
 		this.state =
 		{
 			uuid: uuid(),
-			werehouseName: '',
+			warehouseName: '',
 			database: []
 		}
 	}
@@ -25,17 +25,17 @@ class WerehouseForm extends Component
 		return(
 			<form onSubmit={this.onSubmit} className='form'>
 				<input 
-					id='werehouseName'
+					id='warehouseName'
 					className='text-input'
-					value={this.state.werehouseName}
+					value={this.state.warehouseName}
 					onChange={this.onNameChange}
 					placeholder='Item Name' 
 					type="text" 
 				/>
-				<button className='button'>{this.props.werehouseName ? 'Edit Werehouse' : 'Add new Werehouse'}</button>
+				<button className='button'>{this.props.warehouseName ? 'Edit Warehouse' : 'Add new Warehouse'}</button>
 			</form>
 		);
 	}
 }
 
-export default WerehouseForm;
+export default WarehouseForm;
