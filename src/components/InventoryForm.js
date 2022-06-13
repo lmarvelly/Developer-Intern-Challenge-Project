@@ -84,14 +84,28 @@ class InventoryForm extends Component
 					placeholder='Item Name' 
 					type="text" 
 				/>
-				<input 
-					id='warehouse'
-					className='text-input'
-					value={this.state.warehouse}
+				<select 
+					name="" 
+					id="warehouse"
+					className='select'
+					value={this.state.warehouseUuid}
 					onChange={this.onWarehouseChange}
-					placeholder='Warehouse Name' 
-					type="text" 
-				/>
+				>
+					<option hidden>Select a Season</option>
+					{
+						this.state.database.warehouses.map((warehouse) =>
+						{
+							return(
+								<option
+									key={warehouse.uuid}
+									value={warehouse.uuid}
+								>
+									{`${warehouse.warehouseName} - ${warehouse.warehouseLocation}`}
+								</option>
+							);
+						})
+					}
+				</select>
 				<input 
 					id='quantity'
 					className='text-input'
