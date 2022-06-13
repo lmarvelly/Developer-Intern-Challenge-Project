@@ -39,8 +39,6 @@ class InventoryForm extends Component
 
 	onSubmit = ( e ) =>
 	{
-		e.preventDefault();
-
 		const uuid = this.state.uuid;
 		const itemName = this.state.itemName;
 		const warehouse = this.state.warehouse;
@@ -67,8 +65,6 @@ class InventoryForm extends Component
 			editInventoryItem(inventoryItem);
 			this.props.isEditing(e);
 		}
-
-		window.location.reload(false);
 	}
 
 	render()
