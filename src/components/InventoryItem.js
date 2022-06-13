@@ -26,7 +26,7 @@ class InventoryItem extends Component
 
 	handleDelete = (e) =>
 	{
-		removeItem(this.props.itemName, this.props.uuid);
+		removeItem(this.state.itemName, this.props.uuid);
 
 		// Refresh page
 		window.location.reload(false);
