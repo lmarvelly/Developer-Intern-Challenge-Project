@@ -91,7 +91,7 @@ class InventoryForm extends Component
 					value={this.state.warehouseUuid}
 					onChange={this.onWarehouseChange}
 				>
-					<option hidden>Select a Season</option>
+					<option hidden>Select a Warehouse</option>
 					{
 						this.state.database.warehouses.map((warehouse) =>
 						{
