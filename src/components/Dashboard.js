@@ -12,7 +12,7 @@ const Dashboard = () => (
 		<hr />
 
 		<h1>Add New Warehouse</h1>
-		<WarehouseForm />
+		<WarehouseForm formType={'NEW_WAREHOUSE'} />
 		<hr />
 
 		<InventoryList />
