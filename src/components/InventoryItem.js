@@ -18,8 +18,6 @@ class InventoryItem extends Component
 		}
 	}
 
-	// componentDidMount
-
 	isEditing = (e) =>
 	{
 		e.preventDefault();
