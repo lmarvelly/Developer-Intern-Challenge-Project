@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import uuid from 'uuid';
 
-import { getDatabase, editItem, saveDatabase } from '../actions/inventoryFunctions';
+import { getDatabase, editItem, saveDatabase } from '../actions/databaseFunctions';
 
 class InventoryForm extends Component
 {

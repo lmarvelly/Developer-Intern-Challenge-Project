@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import InventoryForm from './InventoryForm';
-import { removeItem } from '../actions/inventoryFunctions';
+import { removeItem } from '../actions/databaseFunctions';
 
 class InventoryItem extends Component
 {

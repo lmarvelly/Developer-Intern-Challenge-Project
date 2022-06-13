@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { getDatabase } from '../actions/inventoryFunctions';
+import { getDatabase } from '../actions/databaseFunctions';
 import InventoryItem from './InventoryItem';
 
 class InventoryList extends Component
