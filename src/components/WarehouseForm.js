@@ -31,8 +31,6 @@ class WarehouseForm extends Component
 
 	onSubmit = ( e ) =>
 	{
-		e.preventDefault(); // TODO: remove after testing
-
 		const uuid = this.state.uuid;
 		const warehouseName = this.state.warehouseName
 
