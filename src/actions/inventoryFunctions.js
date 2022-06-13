@@ -1,29 +1,32 @@
-export const getSavedInventory = () =>
+// TODO: refactor getSavedInventory to getDatabase
+export const getDatabase = () =>
 {
-	const inventoryListJSON = localStorage.getItem( 'inventoryList' );
+	// const inventoryListJSON = localStorage.getItem( 'inventoryList' );
+	const databaseJSON = localStorage.getItem( 'database' );
 
-	return inventoryListJSON ? JSON.parse( inventoryListJSON ) : [];
+	return databaseJSON ? JSON.parse( databaseJSON ) : [];
 }
 
-export const saveInventory = ( inventoryList ) =>
+// TODO: Refactor saveInventory TO saveDatabase
+export const saveDatabase = ( database ) =>
 {
-	localStorage.setItem('inventoryList', JSON.stringify(inventoryList));
+	localStorage.setItem('database', JSON.stringify(database));
 }
 
 export const removeItem = ( itemName, itemUuid ) =>
 {
 	if(confirm(`Are you sure you want to delete ${itemName} from your inventory?`))
 	{
-		let inventoryList = getSavedInventory();
+		let database = getDatabase();
 
-		const itemIndex = inventoryList.findIndex((item) =>
+		const itemIndex = database.findIndex((item) =>
 		{
 			return itemUuid === item.uuid;
 		});
 
-		inventoryList.splice( itemIndex, 1 )
+		database.splice( itemIndex, 1 )
 
-		saveInventory(inventoryList);
+		saveInventory(database);
 
 		alert(`${itemName} removed from inventory`)
 	}
@@ -31,7 +34,7 @@ export const removeItem = ( itemName, itemUuid ) =>
 
 export const editItem = ( editedItem ) =>
 {
-	const inventoryList = getSavedInventory();
+	const inventoryList = getDatabase();
 	const itemIndex = inventoryList.findIndex((item) =>
 	{
 		return editedItem.uuid === item.uuid;

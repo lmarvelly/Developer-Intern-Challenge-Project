@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import uuid from 'uuid';
 
-import { getSavedInventory, editItem, saveInventory } from '../actions/inventoryFunctions';
+import { getDatabase, editItem, saveDatabase } from '../actions/inventoryFunctions';
 
 class InventoryForm extends Component
 {
@@ -15,13 +15,13 @@ class InventoryForm extends Component
 			itemName: this.props.itemName ? this.props.itemName : '',
 			werehouse: this.props.werehouse ? this.props.werehouse : '',
 			quantity: this.props.quantity ? this.props.quantity : '',
-			inventoryList: []
+			database: []
 		}
 	}
 
 	componentDidMount = () =>
 	{
-		this.setState({inventoryList: getSavedInventory() });
+		this.setState({database: getDatabase() });
 	}
 
 	onNameChange = ( e ) =>
@@ -61,7 +61,7 @@ class InventoryForm extends Component
 
 		if(this.state.formType === 'NEW_ITEM')
 		{
-			saveInventory( [...this.state.inventoryList, inventoryItem] );
+			saveDatabase( [...this.state.database, inventoryItem] );
 		}
 		else if(this.state.formType === 'EDIT_ITEM')
 		{

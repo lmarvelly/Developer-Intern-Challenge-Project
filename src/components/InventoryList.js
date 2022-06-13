@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { getSavedInventory } from '../actions/inventoryFunctions';
+import { getDatabase } from '../actions/inventoryFunctions';
 import InventoryItem from './InventoryItem';
 
 class InventoryList extends Component
@@ -11,7 +11,7 @@ class InventoryList extends Component
 
 		this.state = 
 		{
-			inventoryList: getSavedInventory()
+			inventoryList: getDatabase()
 		}
 	}
 
