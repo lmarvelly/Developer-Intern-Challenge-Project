@@ -15,14 +15,8 @@ class WarehouseList extends Component
 		}
 	}
 
-	componentDidUpdate = () =>
-	{
-		console.log(this.state.warehouseList);
-	}
-
 	render()
 	{
-		console.log(this.state.warehouseList);
 		return(
 			<div>
 				<h1>Warehouse List</h1>
