@@ -15,9 +15,16 @@ class WarehouseForm extends Component
 		}
 	}
 
-	componentDidMount = () =>
+	onNameChange = (e) =>
 	{
+		const warehouseName = e.target.value;
 
+		this.setState({ warehouseName });
+	}
+
+	componentDidUpdate = () =>
+	{
+		console.log(this.state);
 	}
 
 	render()
