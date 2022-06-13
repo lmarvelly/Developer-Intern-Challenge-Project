@@ -52,12 +52,11 @@ class InventoryForm extends Component
 			quantity
 		}
 
-		const updateDatabase = this.state.database;
-
-		updateDatabase.inventory = [ ...updateDatabase.inventory, inventoryItem ] 
-
 		if(this.state.formType === 'NEW_ITEM')
 		{
+			const updateDatabase = this.state.database;
+			updateDatabase.inventory = [ ...updateDatabase.inventory, inventoryItem ];
+
 			saveDatabase( updateDatabase );
 		}
 		else if(this.state.formType === 'EDIT_ITEM')
