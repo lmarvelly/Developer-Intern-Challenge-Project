@@ -32,6 +32,8 @@ class WarehouseList extends Component
 					{
 						return(
 							<WarehouseItem
+								key={warehouse.uuid}
+								uuid={warehouse.uuid}
 								warehouseName={warehouse.warehouseName}
 							/>
 						);
