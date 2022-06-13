@@ -34,7 +34,7 @@ class InventoryItem extends Component
 
 	render()
 	{
-		const buttons = (
+		const component = (
 			<div className='list-item__row'>
 				<h3 className='list-item__title'>{`${this.state.itemName}`}</h3><br />
 				<span>{`Quantity: ${this.state.quantity}`}</span><br />
@@ -58,7 +58,7 @@ class InventoryItem extends Component
 
 		return(
 			<div>
-				{this.state.editing ? inventoryForm : buttons}
+				{this.state.editing ? inventoryForm : component}
 			</div>
 		)
 	}
