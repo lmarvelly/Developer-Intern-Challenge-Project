@@ -88,7 +88,7 @@ class InventoryForm extends Component
 					name="" 
 					id="warehouse"
 					className='select'
-					value={this.state.warehouseUuid}
+					value={this.state.warehouse}
 					onChange={this.onWarehouseChange}
 				>
 					<option hidden>Select a Warehouse</option>
