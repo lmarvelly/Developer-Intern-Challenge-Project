@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import uuid from 'uuid';
 
-import { getDatabase, editItem, saveDatabase } from '../actions/databaseFunctions';
+import { getDatabase, editInventoryItem, saveDatabase } from '../actions/databaseFunctions';
 
 class InventoryForm extends Component
 {
@@ -64,7 +64,7 @@ class InventoryForm extends Component
 		}
 		else if(this.state.formType === 'EDIT_ITEM')
 		{
-			editItem(inventoryItem);
+			editInventoryItem(inventoryItem);
 			this.props.isEditing(e);
 		}
 

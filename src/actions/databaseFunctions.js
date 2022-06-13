@@ -35,7 +35,7 @@ export const removeItem = ( itemName, itemUuid ) =>
 	}
 }
 
-export const editItem = ( editedItem ) =>
+export const editInventoryItem = ( editedItem ) =>
 {
 	const database = getDatabase();
 	const itemIndex = database.inventory.findIndex((item) =>
