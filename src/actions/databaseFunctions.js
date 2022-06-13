@@ -20,7 +20,7 @@ export const removeItem = ( itemName, itemUuid ) =>
 {
 	if(confirm(`Are you sure you want to delete ${itemName} from your inventory?`))
 	{
-		let database = getDatabase();
+		const database = getDatabase();
 
 		const itemIndex = database.inventory.findIndex((item) =>
 		{
@@ -31,7 +31,26 @@ export const removeItem = ( itemName, itemUuid ) =>
 
 		saveDatabase(database);
 
-		alert(`${itemName} removed from inventory`)
+		alert(`${itemName} removed from inventory`);
+	}
+}
+
+export const removeWarehouse = (warehouseName, warehouseUuid) =>
+{
+	if(confirm(`Are you sure you want to delete ${warehouseName} from your warehouses?`))
+	{
+		const database = getDatabase();
+
+		const warehouseIndex = database.warehouses.findIndex((item) =>
+		{
+			return warehouseUuid === item.uuid;
+		});
+
+		database.warehouses.splice( warehouseIndex, 1);
+
+		saveDatabase(database);
+
+		alert(`${warehouseName} removed from Warehouses`);
 	}
 }
 

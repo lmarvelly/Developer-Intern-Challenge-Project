@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { removeWarehouse } from '../actions/databaseFunctions';
 
 class WarehouseItem extends Component
 {
@@ -8,8 +9,17 @@ class WarehouseItem extends Component
 
 		this.state = 
 		{
+			editing: false,
 			warehouseName: this.props.warehouseName
 		}
+	}
+
+	handleDelete = () =>
+	{
+		removeWarehouse( this.state.warehouseName, this.props.uuid );
+
+		// Refresh page
+		window.location.reload(false);
 	}
 
 	render()
