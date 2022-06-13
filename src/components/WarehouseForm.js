@@ -14,6 +14,7 @@ class WarehouseForm extends Component
 			uuid: this.props.uuid ? this.props.uuid : uuid(),
 			formType: this.props.formType,
 			warehouseName: this.props.warehouseName ? this.props.warehouseName : '',
+			warehouseLocation: this.props.warehouseLocation ? this.props.warehouseLocation : '',
 			database: getDatabase()
 		}
 	}
@@ -25,15 +26,24 @@ class WarehouseForm extends Component
 		this.setState({ warehouseName });
 	}
 
+	onLocationChange = (e) =>
+	{
+		const warehouseLocation = e.target.value;
+
+		this.setState({ warehouseLocation });
+	}
+
 	onSubmit = ( e ) =>
 	{
 		const uuid = this.state.uuid;
-		const warehouseName = this.state.warehouseName
+		const warehouseName = this.state.warehouseName;
+		const warehouseLocation = this.state.warehouseLocation;
 
 		const warehouseItem = 
 		{
 			uuid, 
-			warehouseName
+			warehouseName,
+			warehouseLocation
 		}
 
 		if ( this.state.formType === 'NEW_WAREHOUSE' )
@@ -68,7 +78,15 @@ class WarehouseForm extends Component
 					placeholder='Warehouse Name' 
 					type="text" 
 				/>
-				<button className='button'>{this.props.warehouseName ? 'Edit Warehouse' : 'Add new Warehouse'}</button>
+				<input 
+					id='warehouseLocation'
+					className='text-input'
+					value={this.state.warehouseLocation}
+					onChange={this.onLocationChange}
+					placeholder='Warehouse Location' 
+					type="text" 
+				/>
+				<button className='button'>{this.props.warehouseLocation ? 'Edit Warehouse' : 'Add new Warehouse'}</button>
 			</form>
 		);
 	}

@@ -29,6 +29,7 @@ class WarehouseList extends Component
 								key={warehouse.uuid}
 								uuid={warehouse.uuid}
 								warehouseName={warehouse.warehouseName}
+								warehouseLocation={warehouse.warehouseLocation}
 							/>
 						);
 					})

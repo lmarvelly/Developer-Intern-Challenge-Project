@@ -11,7 +11,8 @@ class WarehouseItem extends Component
 		this.state = 
 		{
 			editing: false,
-			warehouseName: this.props.warehouseName
+			warehouseName: this.props.warehouseName,
+			warehouseLocation: this.props.warehouseLocation
 		}
 	}
 
@@ -31,9 +32,11 @@ class WarehouseItem extends Component
 
 	render()
 	{
+		console.log(this.state);
 		const component = (
 			<div className='list-item__row'>
 				<h3 className='list-item__title'>{`${this.state.warehouseName}`}</h3><br />
+				<span>{`Location: ${this.state.warehouseLocation}`}</span><br />
 				<br />
 				<button className='button-small' onClick={this.isEditing}>edit</button>
 				<button className='button-small-alt' onClick={this.handleDelete}>delete</button>
@@ -47,6 +50,7 @@ class WarehouseItem extends Component
 					isEditing={this.isEditing}
 					uuid={this.props.uuid}
 					warehouseName={this.props.warehouseName}
+					warehouseLocation={this.props.warehouseLocation}
 				/>
 			</div>
 		);
