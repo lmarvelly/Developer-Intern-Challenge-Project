@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import uuid from 'uuid';
+import { getDatabase, saveDatabase } from '../actions/databaseFunctions';
 
 class WarehouseForm extends Component
 {
@@ -11,7 +13,7 @@ class WarehouseForm extends Component
 		{
 			uuid: uuid(),
 			warehouseName: '',
-			database: []
+			database: getDatabase()
 		}
 	}
 
@@ -25,6 +27,25 @@ class WarehouseForm extends Component
 	componentDidUpdate = () =>
 	{
 		console.log(this.state);
+	}
+
+	onSubmit = ( e ) =>
+	{
+		e.preventDefault(); // TODO: remove after testing
+
+		const uuid = this.state.uuid;
+		const warehouseName = this.state.warehouseName
+
+		const warehouseItem = 
+		{
+			uuid, 
+			warehouseName
+		}
+
+		const updateDatabase = this.state.database;
+		updateDatabase.warehouses = [ ...updateDatabase.warehouses, warehouseItem ];
+		
+		saveDatabase( updateDatabase );
 	}
 
 	render()
