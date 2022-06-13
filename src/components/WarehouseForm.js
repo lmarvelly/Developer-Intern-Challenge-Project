@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import uuid from 'uuid';
-import { getDatabase, saveDatabase } from '../actions/databaseFunctions';
+import { getDatabase, editWarehouseItem, saveDatabase } from '../actions/databaseFunctions';
 
 class WarehouseForm extends Component
 {
@@ -11,8 +11,9 @@ class WarehouseForm extends Component
 
 		this.state =
 		{
-			uuid: uuid(),
-			warehouseName: '',
+			uuid: this.props.uuid ? this.props.uuid : uuid(),
+			formType: this.props.formType,
+			warehouseName: this.props.warehouseName ? this.props.warehouseName : '',
 			database: getDatabase()
 		}
 	}
@@ -35,10 +36,24 @@ class WarehouseForm extends Component
 			warehouseName
 		}
 
-		const updateDatabase = this.state.database;
-		updateDatabase.warehouses = [ ...updateDatabase.warehouses, warehouseItem ];
-		
-		saveDatabase( updateDatabase );
+		if ( this.state.formType === 'NEW_WAREHOUSE' )
+		{
+			const updateDatabase = this.state.database;
+			updateDatabase.warehouses = [ ...updateDatabase.warehouses, warehouseItem ];
+			
+			saveDatabase( updateDatabase );
+		}
+		else if ( this.state.formType === 'EDIT_WAREHOUSE' ) 
+		{
+			editWarehouseItem(warehouseItem);
+			this.props.isEditing(e);
+			window.location.reload(false); // needed because after item is edits page/componet does not refresh
+		}
+		else
+		{
+			alert('Whoops something went wrong');
+			window.location.reload(false); 
+		}
 	}
 
 	render()

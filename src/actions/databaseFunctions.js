@@ -65,3 +65,15 @@ export const editInventoryItem = ( editedItem ) =>
 	database.inventory[itemIndex] = editedItem;
 	saveDatabase(database);
 }
+
+export const editWarehouseItem = ( editedWarehouse ) =>
+{
+	const database = getDatabase();
+	const warehouseIndex = database.warehouses.findIndex((warehouse) =>
+	{
+		return editedWarehouse.uuid === warehouse.uuid;
+	});
+
+	database.warehouses[warehouseIndex] = editedWarehouse;
+	saveDatabase(database);
+}

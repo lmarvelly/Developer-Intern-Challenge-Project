@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { removeWarehouse } from '../actions/databaseFunctions';
+import WarehouseForm from './WarehouseForm';
 
 class WarehouseItem extends Component
 {
@@ -22,6 +23,12 @@ class WarehouseItem extends Component
 		window.location.reload(false);
 	}
 
+	isEditing = (e) =>
+	{
+		e.preventDefault();
+		this.setState({editing: !this.state.editing});
+	}
+
 	render()
 	{
 		const component = (
@@ -33,8 +40,21 @@ class WarehouseItem extends Component
 			</div>
 		);
 
+		const warehouseForm = (
+			<div>
+				<WarehouseForm
+					formType={'EDIT_WAREHOUSE'}
+					isEditing={this.isEditing}
+					uuid={this.props.uuid}
+					warehouseName={this.props.warehouseName}
+				/>
+			</div>
+		);
+
 		return(
-			component
+			<div>
+				{ this.state.editing ? warehouseForm : component }
+			</div>
 		);
 	}
 }
