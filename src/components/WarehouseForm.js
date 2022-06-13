@@ -24,11 +24,6 @@ class WarehouseForm extends Component
 		this.setState({ warehouseName });
 	}
 
-	componentDidUpdate = () =>
-	{
-		console.log(this.state);
-	}
-
 	onSubmit = ( e ) =>
 	{
 		const uuid = this.state.uuid;
