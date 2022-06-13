@@ -16,6 +16,7 @@ const Dashboard = () => (
 		<hr />
 
 		<InventoryList />
+		<hr />
 
 		<WarehouseList />
 
