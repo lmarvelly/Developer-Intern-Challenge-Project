@@ -16,8 +16,6 @@ class InventoryItem extends Component
 			warehouse: this.props.warehouse,
 			quantity: this.props.quantity
 		}
-		
-		console.log(this.state);
 	}
 
 	isEditing = (e) =>
