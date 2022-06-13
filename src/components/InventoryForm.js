@@ -15,13 +15,8 @@ class InventoryForm extends Component
 			itemName: this.props.itemName ? this.props.itemName : '',
 			werehouse: this.props.werehouse ? this.props.werehouse : '',
 			quantity: this.props.quantity ? this.props.quantity : '',
-			database: []
+			database: getDatabase()
 		}
-	}
-
-	componentDidMount = () =>
-	{
-		this.setState({database: getDatabase() });
 	}
 
 	onNameChange = ( e ) =>
