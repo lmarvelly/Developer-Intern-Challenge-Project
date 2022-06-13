@@ -11,7 +11,7 @@ class InventoryList extends Component
 
 		this.state = 
 		{
-			inventoryList: getDatabase()
+			inventoryList: getDatabase().inventory
 		}
 	}
 
