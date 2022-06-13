@@ -2,6 +2,7 @@ import React from 'react';
 
 import InventoryForm from './InventoryForm';
 import InventoryList from './InventoryList';
+import WerehouseForm from './WerehouseForm';
 
 const Dashboard = () => (
 	<div className='content-container'>
@@ -10,7 +11,7 @@ const Dashboard = () => (
 		<hr />
 
 		<h1>Add New Werehouse</h1>
-		<span>TODO: Add werehouse form here</span>
+		<WerehouseForm />
 		<hr />
 
 		<InventoryList />
