@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import InventoryForm from './InventoryForm';
-import { removeItem } from '../actions/databaseFunctions';
+import { getWarehouseName, removeItem } from '../actions/databaseFunctions';
 
 class InventoryItem extends Component
 {
@@ -13,10 +13,12 @@ class InventoryItem extends Component
 		{
 			editing: false,
 			itemName: this.props.itemName,
-			warehouse: this.props.warehouse,
+			warehouseName: getWarehouseName(this.props.warehouse),
 			quantity: this.props.quantity
 		}
 	}
+
+	// componentDidMount
 
 	isEditing = (e) =>
 	{
@@ -38,7 +40,7 @@ class InventoryItem extends Component
 			<div className='list-item__row'>
 				<h3 className='list-item__title'>{`${this.state.itemName}`}</h3><br />
 				<span>{`Quantity: ${this.state.quantity}`}</span><br />
-				<span>{`Warehouse: ${this.state.warehouse}`}</span><br />
+				<span>{`Warehouse: ${this.state.warehouseName}`}</span><br />
 				<br />
 				<button className='button-small' onClick={this.isEditing}>edit</button>
 				<button className='button-small-alt' onClick={this.handleDelete}>delete</button>
