@@ -24,9 +24,20 @@ class WarehouseList extends Component
 	{
 		console.log(this.state.warehouseList);
 		return(
-			<WarehouseItem
-				warehouseName={this.state.warehouseList[0].warehouseName}
-			/>
+			<div>
+				<h1>Warehouse List</h1>
+
+				{
+					this.state.warehouseList.map((warehouse) =>
+					{
+						return(
+							<WarehouseItem
+								warehouseName={warehouse.warehouseName}
+							/>
+						);
+					})
+				}
+			</div>
 		);
 	};
 }
