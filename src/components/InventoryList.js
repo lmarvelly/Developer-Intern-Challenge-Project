@@ -15,11 +15,6 @@ class InventoryList extends Component
 		}
 	}
 
-	componentDidMount = () =>
-	{
-		console.log(this.state.inventoryList);
-	}
-
 	render()
 	{
 		

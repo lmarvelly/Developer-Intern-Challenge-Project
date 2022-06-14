@@ -32,7 +32,6 @@ class WarehouseItem extends Component
 
 	render()
 	{
-		console.log(this.state);
 		const component = (
 			<div className='list-item__row'>
 				<h3 className='list-item__title'>{`${this.state.warehouseName}`}</h3><br />
