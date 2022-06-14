@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getDatabase } from '../actions/databaseFunctions';
 import WarehouseItem from './WarehouseItem';
 
 class WarehouseList extends Component
