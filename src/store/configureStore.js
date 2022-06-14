@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 import inventoryRecordReducer from '../reducers/inventory';
+import warehousesRecordReducer from '../reducers/warehouse';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -18,7 +19,8 @@ export default () => {
 	const store = createStore(
 		combineReducers(
 		{
-			inventory: inventoryRecordReducer
+			inventory: inventoryRecordReducer,
+			warehouses: warehousesRecordReducer
 		}),
 		composeEnhancers(applyMiddleware(thunk))
 	);

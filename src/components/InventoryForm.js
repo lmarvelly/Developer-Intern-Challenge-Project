@@ -18,8 +18,11 @@ class InventoryForm extends Component
 			itemName: this.props.itemName ? this.props.itemName : '',
 			warehouse: this.props.warehouse ? this.props.warehouse : '',
 			quantity: this.props.quantity ? this.props.quantity : '',
-			database: getDatabase() ? getDatabase() : []
+			warehouses: props.warehouses ? props.warehouses : '',
 		}
+
+		console.log('STATE', this.state);
+		console.log('PROPS', props.warehouses);
 	}
 
 	onNameChange = ( e ) =>
@@ -77,7 +80,7 @@ class InventoryForm extends Component
 
 	render()
 	{
-		console.log('DATABASE:', this.state.database);
+		console.log('WAREHOUSES:', this.state.warehouses);
 		return(
 			<form onSubmit={this.onSubmit} className='form'>
 				<input 
@@ -97,10 +100,10 @@ class InventoryForm extends Component
 				>
 					<option hidden>Select a Warehouse</option>
 					{
-						this.state.database
+						this.props.warehouses
 						?
 						(
-							this.state.database.warehouses.map((warehouse) =>
+							this.props.warehouses.map((warehouse) =>
 							{
 								return(
 									<option
@@ -138,8 +141,10 @@ const mapDispatchToProps = ( dispatch ) => (
 
 const mapStateToProps = ( state ) =>
 {
+	console.log('mapStateToProps', state);
 	return {
-		database: state.database
+		inventory: state.inventory,
+		warehouses: state.warehouses
 	}
 }
 
