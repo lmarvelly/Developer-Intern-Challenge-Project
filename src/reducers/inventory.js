@@ -9,6 +9,8 @@ export default (state = inventoryRecordDefaultState, action) =>
 				...state,
 				action.item
 			];
+		case 'REMOVE_ITEM':
+			return state.filter(({ uuid }) => uuid !== action.uuid);
 		case 'SET_INVENTORY':
 			return action.inventory;
 	

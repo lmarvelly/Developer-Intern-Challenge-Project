@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import InventoryForm from './InventoryForm';
-import { removeItem } from '../actions/databaseFunctions';
+import { startRemoveItem } from '../actions/inventory';
+// import { removeItem } from '../actions/databaseFunctions';
 
 class InventoryItem extends Component
 {
@@ -40,10 +41,9 @@ class InventoryItem extends Component
 
 	handleDelete = (e) =>
 	{
-		removeItem(this.state.itemName, this.props.uuid);
+		// removeItem(this.state.itemName, this.props.uuid);
 
-		// Refresh page
-		window.location.reload(false);
+		this.props.startRemoveItem( this.props.uuid )
 	}
 
 	render()
@@ -85,4 +85,9 @@ const mapStateToProps = ( state ) =>
 	}
 }
 
-export default connect( mapStateToProps )( InventoryItem );
+const mapDispatchToProps = ( dispatch ) => (
+{
+	startRemoveItem: ( uuid ) => dispatch( startRemoveItem( uuid ) )
+});
+
+export default connect( mapStateToProps, mapDispatchToProps )( InventoryItem );

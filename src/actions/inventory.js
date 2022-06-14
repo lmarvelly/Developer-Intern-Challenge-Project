@@ -59,4 +59,23 @@ export const startSetInventory = () =>
 				dispatch(setInventory( inventory ))
 			});
 	}
+};
+
+export const removeItem = (uuid) => (
+{
+	type: 'REMOVE_ITEM',
+	uuid
+});
+
+export const startRemoveItem = ( uuid ) =>
+{
+	return (dispatch, getState) =>
+	{
+		return database.ref(`database/invertory/${uuid}`)
+			.remove()
+			.then((ref) =>
+			{
+				dispatch(removeItem(uuid))
+			})
+	}
 }
