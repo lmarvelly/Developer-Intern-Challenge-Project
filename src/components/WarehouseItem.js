@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-// import { removeWarehouse } from '../actions/databaseFunctions';
 import { removeWarehouse, startRemoveWarehouse } from '../actions/warehouses';
 import WarehouseForm from './WarehouseForm';
 
@@ -21,12 +20,6 @@ class WarehouseItem extends Component
 
 	handleDelete = () =>
 	{
-		// removeWarehouse( this.state.warehouseName, this.props.uuid );
-
-		// Refresh page
-		// window.location.reload(false);
-
-		// this.props.removeWarehouse( this.props.uuid )
 		this.props.startRemoveWarehouse( this.props.uuid );
 	}
 
@@ -70,7 +63,6 @@ class WarehouseItem extends Component
 
 const mapDispatchToProps = ( dispatch ) => (
 {
-	// removeWarehouse: ( uuid ) => dispatch( removeWarehouse( uuid ) ),
 	startRemoveWarehouse: ( uuid ) => dispatch( startRemoveWarehouse( uuid ) )
 });
 
