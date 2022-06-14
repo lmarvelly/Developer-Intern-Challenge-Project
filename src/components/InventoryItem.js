@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import InventoryForm from './InventoryForm';
-import { getWarehouseName, removeItem } from '../actions/databaseFunctions';
+import { removeItem } from '../actions/databaseFunctions';
 
 class InventoryItem extends Component
 {
@@ -13,9 +14,21 @@ class InventoryItem extends Component
 		{
 			editing: false,
 			itemName: this.props.itemName,
-			warehouseName: getWarehouseName(this.props.warehouse),
+			warehouseName: this.getWarehouseName(this.props.warehouse),
 			quantity: this.props.quantity
 		}
+	}
+
+	getWarehouseName = (warehouseUuid) =>
+	{
+		const warehouses = this.props.warehouses;
+
+		const warehouseIndex = warehouses.findIndex( (childWarehouse) =>
+		{
+			return warehouseUuid === childWarehouse.uuid;
+		});
+
+		return warehouses[warehouseIndex].warehouseName;
 	}
 
 	isEditing = (e) =>
@@ -64,4 +77,11 @@ class InventoryItem extends Component
 	}
 }
 
-export default InventoryItem;
+const mapStateToProps = ( state ) =>
+{
+	return {
+		warehouses: state.warehouses
+	}
+}
+
+export default connect( mapStateToProps )( InventoryItem );

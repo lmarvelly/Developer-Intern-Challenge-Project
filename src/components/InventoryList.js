@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { getDatabase } from '../actions/databaseFunctions';
 import InventoryItem from './InventoryItem';
@@ -8,23 +9,18 @@ class InventoryList extends Component
 	constructor( props )
 	{
 		super( props );
-
-		this.state = 
-		{
-			inventoryList: getDatabase().inventory ? getDatabase().inventory : [] 
-		}
 	}
 
 	render()
 	{
-		
 		return(
 			<div>
 				<h1>Inventory List</h1>
 				{
-					( this.state.inventoryList.length > 0 ) ?
+					( this.props.inventory.length > 0 )
+					?
 					(
-						this.state.inventoryList.map((inventory) =>
+						this.props.inventory.map((inventory) =>
 						{
 							return(
 								<InventoryItem
@@ -47,4 +43,12 @@ class InventoryList extends Component
 	}
 }
 
-export default InventoryList;
+const mapStateToProps = ( state ) =>
+{
+	return {
+		inventory: state.inventory,
+		warehouses: state.warehouses
+	}
+}
+
+export default connect(mapStateToProps)( InventoryList );
