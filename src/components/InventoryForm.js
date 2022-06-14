@@ -134,7 +134,6 @@ class InventoryForm extends Component
 
 const mapDispatchToProps = ( dispatch ) => (
 {
-	// addItem: ( item ) => dispatch( addItem( item ) ),
 	startAddItem: ({ ...item }) => dispatch( startAddItem({ ...item }))
 });
 
