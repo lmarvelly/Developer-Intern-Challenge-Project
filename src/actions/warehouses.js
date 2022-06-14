@@ -60,7 +60,7 @@ export const startSetWarehouses = () =>
 	}
 }
 
-export const removeWarehouse = ( uuid ) =>(
+export const removeWarehouse = ( uuid ) => (
 {
 	type: 'REMOVE_WAREHOUSE',
 	uuid
@@ -70,22 +70,6 @@ export const startRemoveWarehouse = ( uuid ) =>
 {
 	return (dispatch, getState) =>
 	{
-		// let canDelete = true;
-
-		// return database.ref('database/warehouses')
-		// 	.once('value')
-		// 	.then((snapshot) =>
-		// 	{
-		// 		snapshot.forEach((childSnapshot) =>
-		// 		{
-		// 			if(childSnapshot.val().uuid === uuid)
-		// 			{
-		// 				canDelete = false;
-		// 				return true;
-		// 			}
-		// 		})
-		// 	})
-
 		return database.ref(`database/warehouses/${uuid}`)
 			.remove()
 			.then((ref) =>

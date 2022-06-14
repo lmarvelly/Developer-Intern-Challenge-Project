@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { removeWarehouse, startRemoveWarehouse } from '../actions/warehouses';
+import { startRemoveWarehouse } from '../actions/warehouses';
 import WarehouseForm from './WarehouseForm';
 
 class WarehouseItem extends Component
@@ -18,8 +18,9 @@ class WarehouseItem extends Component
 		}
 	}
 
-	handleDelete = () =>
+	handleDelete = (e) =>
 	{
+		e.preventDefault();
 		this.props.startRemoveWarehouse( this.props.uuid );
 	}
 
