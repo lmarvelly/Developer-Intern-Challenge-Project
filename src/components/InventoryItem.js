@@ -28,7 +28,8 @@ class InventoryItem extends Component
 			return warehouseUuid === childWarehouse.uuid;
 		});
 
-		return warehouses[warehouseIndex].warehouseName;
+		// Return 'Unknown' in case warehouse connected to an invertory item is deleted or not found
+		return warehouses[warehouseIndex] ? warehouses[warehouseIndex].warehouseName : 'unknown';
 	}
 
 	isEditing = (e) =>
