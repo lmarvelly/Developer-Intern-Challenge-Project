@@ -20,9 +20,6 @@ class InventoryForm extends Component
 			quantity: this.props.quantity ? this.props.quantity : '',
 			warehouses: props.warehouses ? props.warehouses : '',
 		}
-
-		console.log('STATE', this.state);
-		console.log('PROPS', props.warehouses);
 	}
 
 	onNameChange = ( e ) =>
@@ -80,7 +77,6 @@ class InventoryForm extends Component
 
 	render()
 	{
-		console.log('WAREHOUSES:', this.state.warehouses);
 		return(
 			<form onSubmit={this.onSubmit} className='form'>
 				<input 
@@ -141,7 +137,6 @@ const mapDispatchToProps = ( dispatch ) => (
 
 const mapStateToProps = ( state ) =>
 {
-	console.log('mapStateToProps', state);
 	return {
 		inventory: state.inventory,
 		warehouses: state.warehouses
