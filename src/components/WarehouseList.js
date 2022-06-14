@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { getDatabase } from '../actions/databaseFunctions';
 import WarehouseItem from './WarehouseItem';
@@ -8,11 +9,6 @@ class WarehouseList extends Component
 	constructor( props )
 	{
 		super( props );
-
-		this.state =
-		{
-			warehouseList: getDatabase().warehouses ? getDatabase().warehouses : []
-		}
 	}
 
 	render()
@@ -22,10 +18,10 @@ class WarehouseList extends Component
 				<h1>Warehouse List</h1>
 
 				{
-					( this.state.warehouseList.length > 0 ) 
+					( this.props.warehouses.length > 0 ) 
 					?
 					(
-						this.state.warehouseList.map((warehouse) =>
+						this.props.warehouses.map((warehouse) =>
 						{
 							return(
 								<WarehouseItem
@@ -47,4 +43,12 @@ class WarehouseList extends Component
 	};
 }
 
-export default WarehouseList;
+const mapStateToProps = ( state ) =>
+{
+	return {
+		inventory: state.inventory,
+		warehouses: state.warehouses
+	}
+}
+
+export default connect(mapStateToProps)( WarehouseList );
