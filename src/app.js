@@ -13,7 +13,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from './firebase/firebase';
 import Dashboard from './components/Dashboard';
 import { setInventory } from './actions/inventory';
-import { setWarehouses } from './actions/warehouses';
+import { startSetWarehouses } from './actions/warehouses';
 import { getDatabase } from './actions/databaseFunctions';
 
 const store = configureStore();
@@ -38,5 +38,5 @@ const store = configureStore();
 ReactDOM.render(jsx, document.getElementById('app'));
 
 // TODO: dispatches
-store.dispatch(setWarehouses(getDatabase().warehouses));
+store.dispatch(startSetWarehouses(getDatabase().warehouses));
 store.dispatch(setInventory(getDatabase().inventory));

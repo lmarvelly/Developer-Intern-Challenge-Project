@@ -35,3 +35,27 @@ export const setWarehouses = ( warehouses ) => (
 	type: 'SET_WAREHOUSES',
 	warehouses
 });
+
+export const startSetWarehouses = () =>
+{
+	return ( dispatch, getState ) =>
+	{
+		return database.ref('database/warehouses')
+			.once('value')
+			.then((snapshot) =>
+			{
+				const warehouses = [];
+
+				snapshot.forEach((childSnapshot) =>
+				{
+					warehouses.push(
+					{
+						uuid: childSnapshot.key,
+						...childSnapshot.val()
+					});
+				});
+
+				dispatch(setWarehouses( warehouses ));
+			})
+	}
+}
