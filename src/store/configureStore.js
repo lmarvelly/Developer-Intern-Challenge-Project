@@ -1,6 +1,8 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
+import inventoryRecordReducer from '../reducers/inventory';
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 /**
@@ -16,13 +18,7 @@ export default () => {
 	const store = createStore(
 		combineReducers(
 		{
-			// paymentRecord: paymentRecordReducer,
-			// recordFilters:  recordFilterReducer,
-			// members: membersRecordReducer,
-			// memberFilters: memberFilterReducer,
-			// seasons: seasonsRecordReducer,
-			// seasonFilters: seasonFilterReducer,
-			// auth: authReducer
+			inventory: inventoryRecordReducer
 		}),
 		composeEnhancers(applyMiddleware(thunk))
 	);
