@@ -1,4 +1,3 @@
-// import { getDatabase } from "./databaseFunctions";
 import database from '../firebase/firebase';
 
 export const addItem = ( item ) => (
