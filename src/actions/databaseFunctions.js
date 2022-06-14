@@ -7,20 +7,7 @@ const defaultDataBase =
 export const getDatabase = () =>
 {
 	const databaseJSON = localStorage.getItem( 'database' );
-
 	return databaseJSON ? JSON.parse( databaseJSON ) : defaultDataBase;
-}
-
-export const getWarehouseName = ( warehouseUuid ) =>
-{
-	const database = getDatabase();
-
-	const warehouseIndex = database.warehouses.findIndex( (warehouse) =>
-	{
-		return warehouseUuid === warehouse.uuid;
-	});
-
-	return database.warehouses[warehouseIndex].warehouseName;
 }
 
 export const saveDatabase = ( database ) =>
