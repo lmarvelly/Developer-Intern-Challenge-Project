@@ -1,7 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import uuid from 'uuid';
 
+import { addItem } from '../actions/inventory';
 import { getDatabase, editInventoryItem, saveDatabase } from '../actions/databaseFunctions'; 
+import getVisibleInventory from '../selectors/inventory';
 
 class InventoryForm extends Component
 {
@@ -128,4 +131,16 @@ class InventoryForm extends Component
 	}
 };
 
-export default InventoryForm;
+const mapDispatchToProps = ( dispatch ) => (
+{
+	addItem: ( item ) => dispatch( addItem( item ) ),
+});
+
+const mapStateToProps = ( state ) =>
+{
+	return {
+		database: state.database
+	}
+}
+
+export default connect( mapStateToProps, mapDispatchToProps )( InventoryForm );
