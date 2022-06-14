@@ -9,9 +9,12 @@ export default (state = warehouseRecordDefaultState, action) =>
 				...state,
 				action.warehouse
 			];
+
 		case 'SET_WAREHOUSES':
 			return action.warehouses;
-	
+		
+		case 'REMOVE_WAREHOUSE':
+			return state.filter(({ uuid }) => uuid !== action.uuid);
 		default:
 			return state;
 	}
