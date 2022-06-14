@@ -12,7 +12,7 @@ import './styles/styles.scss'; // SASS styles form
 import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from './firebase/firebase';
 import Dashboard from './components/Dashboard';
-import { setInventory } from './actions/inventory';
+import { startSetInventory } from './actions/inventory';
 import { startSetWarehouses } from './actions/warehouses';
 import { getDatabase } from './actions/databaseFunctions';
 
@@ -39,4 +39,4 @@ ReactDOM.render(jsx, document.getElementById('app'));
 
 // TODO: dispatches
 store.dispatch(startSetWarehouses(getDatabase().warehouses));
-store.dispatch(setInventory(getDatabase().inventory));
+store.dispatch(startSetInventory(getDatabase().inventory));
