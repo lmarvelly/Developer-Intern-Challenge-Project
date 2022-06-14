@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 
-import { addItem } from '../actions/inventory';
+import { startAddItem } from '../actions/inventory';
 import { getDatabase, editInventoryItem, saveDatabase } from '../actions/databaseFunctions'; 
 import getVisibleInventory from '../selectors/inventory';
 
@@ -42,6 +42,7 @@ class InventoryForm extends Component
 
 	onSubmit = ( e ) =>
 	{
+		e.preventDefault();
 		const uuid = this.state.uuid;
 		const itemName = this.state.itemName;
 		const warehouse = this.state.warehouse;
@@ -57,10 +58,11 @@ class InventoryForm extends Component
 
 		if(this.state.formType === 'NEW_ITEM')
 		{
-			const updateDatabase = this.state.database;
-			updateDatabase.inventory = [ ...updateDatabase.inventory, inventoryItem ];
+			// const updateDatabase = this.state.database;
+			// updateDatabase.inventory = [ ...updateDatabase.inventory, inventoryItem ];
 
-			saveDatabase( updateDatabase );
+			// saveDatabase( updateDatabase );
+			this.props.startAddItem(inventoryItem);
 		}
 		else if(this.state.formType === 'EDIT_ITEM')
 		{
@@ -132,7 +134,8 @@ class InventoryForm extends Component
 
 const mapDispatchToProps = ( dispatch ) => (
 {
-	addItem: ( item ) => dispatch( addItem( item ) ),
+	// addItem: ( item ) => dispatch( addItem( item ) ),
+	startAddItem: ({ ...item }) => dispatch( startAddItem({ ...item }))
 });
 
 const mapStateToProps = ( state ) =>
