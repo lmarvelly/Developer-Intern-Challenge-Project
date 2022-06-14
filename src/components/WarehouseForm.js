@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import uuid from 'uuid';
+
+import { startAddWarehouse } from '../actions/warehouses';
 import { getDatabase, editWarehouseItem, saveDatabase } from '../actions/databaseFunctions';
 
 class WarehouseForm extends Component
@@ -15,7 +17,6 @@ class WarehouseForm extends Component
 			formType: this.props.formType,
 			warehouseName: this.props.warehouseName ? this.props.warehouseName : '',
 			warehouseLocation: this.props.warehouseLocation ? this.props.warehouseLocation : '',
-			database: getDatabase()
 		}
 	}
 
@@ -35,6 +36,7 @@ class WarehouseForm extends Component
 
 	onSubmit = ( e ) =>
 	{
+		e.preventDefault();
 		const uuid = this.state.uuid;
 		const warehouseName = this.state.warehouseName;
 		const warehouseLocation = this.state.warehouseLocation;
@@ -48,10 +50,12 @@ class WarehouseForm extends Component
 
 		if ( this.state.formType === 'NEW_WAREHOUSE' )
 		{
-			const updateDatabase = this.state.database;
-			updateDatabase.warehouses = [ ...updateDatabase.warehouses, warehouseItem ];
+			// const updateDatabase = this.state.database;
+			// updateDatabase.warehouses = [ ...updateDatabase.warehouses, warehouseItem ];
 			
-			saveDatabase( updateDatabase );
+			// saveDatabase( updateDatabase );
+
+			this.props.startAddWarehouse(warehouseItem);
 		}
 		else if ( this.state.formType === 'EDIT_WAREHOUSE' ) 
 		{
@@ -92,4 +96,17 @@ class WarehouseForm extends Component
 	}
 }
 
-export default WarehouseForm;
+const mapDispatchToProps = ( dispatch ) => (
+{
+	startAddWarehouse: ({ ...warehouse }) => dispatch( startAddWarehouse({ ...warehouse }))
+});
+
+const mapStateToProps = ( state ) =>
+{
+	return {
+		inventory: state.inventory,
+		warehouses: state.warehouses
+	}
+}
+
+export default connect( mapStateToProps, mapDispatchToProps )( WarehouseForm );
