@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import uuid from 'uuid';
 
-import { getDatabase, editInventoryItem, saveDatabase } from '../actions/databaseFunctions';
+import { getDatabase, editInventoryItem, saveDatabase } from '../actions/databaseFunctions'; 
 
 class InventoryForm extends Component
 {
@@ -15,7 +15,7 @@ class InventoryForm extends Component
 			itemName: this.props.itemName ? this.props.itemName : '',
 			warehouse: this.props.warehouse ? this.props.warehouse : '',
 			quantity: this.props.quantity ? this.props.quantity : '',
-			database: getDatabase()
+			database: getDatabase() ? getDatabase() : []
 		}
 	}
 
@@ -74,6 +74,7 @@ class InventoryForm extends Component
 
 	render()
 	{
+		console.log('DATABASE:', this.state.database);
 		return(
 			<form onSubmit={this.onSubmit} className='form'>
 				<input 
@@ -93,17 +94,23 @@ class InventoryForm extends Component
 				>
 					<option hidden>Select a Warehouse</option>
 					{
-						this.state.database.warehouses.map((warehouse) =>
-						{
-							return(
-								<option
-									key={warehouse.uuid}
-									value={warehouse.uuid}
-								>
-									{`${warehouse.warehouseName} - ${warehouse.warehouseLocation}`}
-								</option>
-							);
-						})
+						this.state.database
+						?
+						(
+							this.state.database.warehouses.map((warehouse) =>
+							{
+								return(
+									<option
+										key={warehouse.uuid}
+										value={warehouse.uuid}
+									>
+										{`${warehouse.warehouseName} - ${warehouse.warehouseLocation}`}
+									</option>
+								);
+							})
+						)
+						:
+						(<option hidden>Please create a warehouse</option>)
 					}
 				</select>
 				<input 

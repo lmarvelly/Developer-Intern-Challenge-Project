@@ -15,24 +15,37 @@ class InventoryList extends Component
 		}
 	}
 
+	componentDidMount = () =>
+	{
+		console.log(this.state.inventoryList);
+	}
+
 	render()
 	{
+		
 		return(
 			<div>
 				<h1>Inventory List</h1>
 				{
-					this.state.inventoryList.map((inventory) =>
-					{
-						return(
-							<InventoryItem
-								key={inventory.uuid}
-								uuid={inventory.uuid}
-								itemName={inventory.itemName}
-								warehouse={inventory.warehouse}
-								quantity={inventory.quantity}
-							/>
-						);
-					})
+					( this.state.inventoryList.length > 0 ) ?
+					(
+						this.state.inventoryList.map((inventory) =>
+						{
+							return(
+								<InventoryItem
+									key={inventory.uuid}
+									uuid={inventory.uuid}
+									itemName={inventory.itemName}
+									warehouse={inventory.warehouse}
+									quantity={inventory.quantity}
+								/>
+							);
+						})
+					)
+					:
+					(
+						<span>No Inventory</span>
+					)
 				}
 			</div>
 		);

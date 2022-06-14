@@ -11,7 +11,7 @@ class WarehouseList extends Component
 
 		this.state =
 		{
-			warehouseList: getDatabase().warehouses
+			warehouseList: getDatabase().warehouses ? getDatabase().warehouses : []
 		}
 	}
 
@@ -22,17 +22,25 @@ class WarehouseList extends Component
 				<h1>Warehouse List</h1>
 
 				{
-					this.state.warehouseList.map((warehouse) =>
-					{
-						return(
-							<WarehouseItem
-								key={warehouse.uuid}
-								uuid={warehouse.uuid}
-								warehouseName={warehouse.warehouseName}
-								warehouseLocation={warehouse.warehouseLocation}
-							/>
-						);
-					})
+					( this.state.warehouseList.length > 0 ) 
+					?
+					(
+						this.state.warehouseList.map((warehouse) =>
+						{
+							return(
+								<WarehouseItem
+									key={warehouse.uuid}
+									uuid={warehouse.uuid}
+									warehouseName={warehouse.warehouseName}
+									warehouseLocation={warehouse.warehouseLocation}
+								/>
+							);
+						})
+					)
+					:
+					(
+						<span>No Warehouses</span>
+					)
 				}
 			</div>
 		);
