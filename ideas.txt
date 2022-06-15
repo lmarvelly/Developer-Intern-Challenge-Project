@@ -1,4 +1,0 @@
-TODO:
-	Organise inventory alphabetically
-	organise warehouses alphabetically
-	refactor warehouse to warehouseUuid
