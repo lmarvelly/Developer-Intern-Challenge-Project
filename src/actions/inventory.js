@@ -79,3 +79,26 @@ export const startRemoveItem = ( uuid ) =>
 			})
 	}
 }
+
+export const editItem = ( uuid, updates ) => (
+{
+	type: 'EDIT_ITEM',
+	uuid,
+	updates
+});
+
+export const startEditItem = ( uuid, updates ) =>
+{
+	const { 
+		itemName = '',
+		warehouse = '',
+		quantity = '' 
+	} = updates;
+
+	return ( dispatch, getState ) =>
+	{
+		return database.ref(`database/inventory/${uuid}`)
+			.update({ itemName, warehouse, quantity })
+			.then( dispatch( editItem( uuid, { itemName, warehouse, quantity } )));
+	}
+};

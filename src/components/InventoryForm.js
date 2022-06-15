@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 
-import { startAddItem } from '../actions/inventory';
+import { startAddItem, startEditItem } from '../actions/inventory';
 import { getDatabase, editInventoryItem, saveDatabase } from '../actions/databaseFunctions'; 
 import getVisibleInventory from '../selectors/inventory';
 
@@ -58,17 +58,13 @@ class InventoryForm extends Component
 
 		if(this.state.formType === 'NEW_ITEM')
 		{
-			// const updateDatabase = this.state.database;
-			// updateDatabase.inventory = [ ...updateDatabase.inventory, inventoryItem ];
-
-			// saveDatabase( updateDatabase );
 			this.props.startAddItem(inventoryItem);
 		}
 		else if(this.state.formType === 'EDIT_ITEM')
 		{
-			editInventoryItem(inventoryItem);
+			this.props.startEditItem(inventoryItem)
 			this.props.isEditing(e);
-			window.location.reload(false); // needed because after item is edits page/componet does not refresh
+			window.location.reload(false); // TODO: Component not reseting 
 		}
 		else
 		{
@@ -134,7 +130,8 @@ class InventoryForm extends Component
 
 const mapDispatchToProps = ( dispatch ) => (
 {
-	startAddItem: ({ ...item }) => dispatch( startAddItem({ ...item }))
+	startAddItem: ({ ...item }) => dispatch( startAddItem({ ...item })),
+	startEditItem: ( item ) => dispatch( startEditItem( item.uuid, item ) )
 });
 
 const mapStateToProps = ( state ) =>

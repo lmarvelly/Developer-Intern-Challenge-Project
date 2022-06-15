@@ -13,7 +13,19 @@ export default (state = inventoryRecordDefaultState, action) =>
 			return state.filter(({ uuid }) => uuid !== action.uuid);
 		case 'SET_INVENTORY':
 			return action.inventory;
-	
+		case 'EDIT_ITEM':
+			return state.map( (item) =>
+			{
+				if( item.uuid === action.uuid )
+				{
+					console.log(item);
+					return {
+						...item,
+						...action.updates
+					}
+				}
+				else { return item }
+			});
 		default:
 			return state;
 	}
