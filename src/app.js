@@ -14,7 +14,6 @@ import { firebase } from './firebase/firebase';
 import Dashboard from './components/Dashboard';
 import { startSetInventory } from './actions/inventory';
 import { startSetWarehouses } from './actions/warehouses';
-import { getDatabase } from './actions/databaseFunctions';
 
 const store = configureStore();
 
@@ -38,5 +37,5 @@ const store = configureStore();
 ReactDOM.render(jsx, document.getElementById('app'));
 
 // TODO: dispatches
-store.dispatch(startSetWarehouses(getDatabase().warehouses));
-store.dispatch(startSetInventory(getDatabase().inventory));
+store.dispatch(startSetWarehouses());
+store.dispatch(startSetInventory());
