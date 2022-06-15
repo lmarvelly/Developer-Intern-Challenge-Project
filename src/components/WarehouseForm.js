@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 
-import { startAddWarehouse } from '../actions/warehouses';
+import { startAddWarehouse, startEditWarehouse } from '../actions/warehouses';
 import { getDatabase, editWarehouseItem, saveDatabase } from '../actions/databaseFunctions';
 
 class WarehouseForm extends Component
@@ -50,16 +50,11 @@ class WarehouseForm extends Component
 
 		if ( this.state.formType === 'NEW_WAREHOUSE' )
 		{
-			// const updateDatabase = this.state.database;
-			// updateDatabase.warehouses = [ ...updateDatabase.warehouses, warehouseItem ];
-			
-			// saveDatabase( updateDatabase );
-
 			this.props.startAddWarehouse(warehouseItem);
 		}
 		else if ( this.state.formType === 'EDIT_WAREHOUSE' ) 
 		{
-			editWarehouseItem(warehouseItem);
+			this.props.startEditWarehouse(warehouseItem);
 			this.props.isEditing(e);
 			window.location.reload(false); // needed because after item is edits page/componet does not refresh
 		}
@@ -98,7 +93,8 @@ class WarehouseForm extends Component
 
 const mapDispatchToProps = ( dispatch ) => (
 {
-	startAddWarehouse: ({ ...warehouse }) => dispatch( startAddWarehouse({ ...warehouse }))
+	startAddWarehouse: ({ ...warehouse }) => dispatch( startAddWarehouse({ ...warehouse })),
+	startEditWarehouse: ( warehouse ) => dispatch( startEditWarehouse( warehouse.uuid, warehouse ) )
 });
 
 const mapStateToProps = ( state ) =>

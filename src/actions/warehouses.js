@@ -11,8 +11,8 @@ export const startAddWarehouse = ( warehouseData = {} ) =>
 	return (dispatch, getState) =>
 	{
 		const {
-			warehouseName,
-			warehouseLocation
+			warehouseName = '',
+			warehouseLocation = ''
 		} = warehouseData
 
 		const warehouse = { warehouseName, warehouseLocation }
@@ -78,3 +78,25 @@ export const startRemoveWarehouse = ( uuid ) =>
 			})
 	}
 }
+
+export const editWarehouse = ( uuid, updates ) => (
+{
+	type: 'EDIT_WAREHOUSE',
+	uuid,
+	updates
+});
+
+export const startEditWarehouse = ( uuid, updates ) =>
+{
+	const {
+		warehouseName = '',
+		warehouseLocation = ''
+	} = updates;
+
+	return ( dispatch, getState ) =>
+	{
+		return database.ref(`database/warehouses/${uuid}`)
+			.update({ warehouseName, warehouseLocation })
+			.then( dispatch( editWarehouse( uuid, { warehouseName, warehouseLocation })));
+	}
+};
