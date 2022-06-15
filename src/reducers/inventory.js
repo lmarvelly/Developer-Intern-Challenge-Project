@@ -18,7 +18,6 @@ export default (state = inventoryRecordDefaultState, action) =>
 			{
 				if( item.uuid === action.uuid )
 				{
-					console.log(item);
 					return {
 						...item,
 						...action.updates
