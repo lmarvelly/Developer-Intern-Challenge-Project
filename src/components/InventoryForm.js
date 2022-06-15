@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import uuid from 'uuid';
 
 import { startAddItem, startEditItem } from '../actions/inventory';
-import { getDatabase, editInventoryItem, saveDatabase } from '../actions/databaseFunctions'; 
-import getVisibleInventory from '../selectors/inventory';
 
 class InventoryForm extends Component
 {

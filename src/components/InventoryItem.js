@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import InventoryForm from './InventoryForm';
 import { startRemoveItem } from '../actions/inventory';
-// import { removeItem } from '../actions/databaseFunctions';
 
 class InventoryItem extends Component
 {

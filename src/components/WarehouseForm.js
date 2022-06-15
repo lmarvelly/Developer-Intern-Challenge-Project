@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import uuid from 'uuid';
 
 import { startAddWarehouse, startEditWarehouse } from '../actions/warehouses';
-import { getDatabase, editWarehouseItem, saveDatabase } from '../actions/databaseFunctions';
 
 class WarehouseForm extends Component
 {
